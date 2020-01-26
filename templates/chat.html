@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome to slack!
+{% endblock %}
+
+{% block index_js %}
+<script type="text/javascript" src="{{ url_for('static', filename='chat.js') }}"></script>
+{% endblock %}
+
+<!--This is the body block-->
+{% block body %}
+
+<h1>You have now logged in the {{thread_name}}</h1>
+
+<!--Chat area-->
+<div class="chat">
+  <div class="message">
+    <div class="toast-header">
+      <strong class="mr-auto username">Bootstrap</strong>
+    </div>
+    <div class="toast-body">
+      See? Just like this.
+    </div>
+  </div>
+  
+  <div class="message">
+    <div class="toast-header">
+      <strong class="mr-auto username">Bootstrap</strong>
+    </div>
+    <div class="toast-body">
+      Heads up, toasts will stack automatically
+    </div>
+  </div>
+
+</div>
+
+
+
+<!--This will be the chat-->
+<!--TO DO -- ADD ACTION TO STAY ON THE SAME PAGE-->
+<div class="input-group mb-2" style="position: absolute; bottom: 0; height: 60px;">
+  <input type="text" class="form-control" id ="input" placeholder="Type your message here" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button id="send" type="button" class="btn btn-secondary" style="height: 40px;">Send</button>
+  </div>
+</div>
+
+
+</div>
+{% endblock %}
+
+
+#footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:60px;
+}

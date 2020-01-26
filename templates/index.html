@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome to slack!
+{% endblock %}
+
+<!--This is the body block-->
+{% block body %}
+
+<h1>Welcome to slack. Please use enter your username below login</h1>
+
+<div class="container" style="margin-top: 10rem;">
+<form action="/"  method="post">
+    <div class="form-group">
+      <label for="InputUsername">Username</label>
+      <input type="username" class="form-control" id="username" name="username">
+    </div>
+    <button type="submit" id="login" class="btn btn-primary" data-status="login">Submit</button>
+</form>
+</div>
+{% endblock %}

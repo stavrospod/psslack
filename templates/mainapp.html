@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Welcome to slack!
+{% endblock %}
+
+{% block index_js %}
+<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+{% endblock %}
+
+<!--This is the body block-->
+{% block body %}
+
+<h1>Welcome to slack {{name}}. Please use enter your username below login</h1>
+
+<p>Available Threads </p>
+<ul id="threads">
+    <!--TO DO ---- ADD THE URL OF THE CORRECT THREAD-->
+    {% for thread in active_threads %}
+    <a href="{{ url_for('chat') }}">
+    <li>{{thread}}</li>
+    </a>
+    {% endfor %}
+</ul>
+
+<button id="new_thread">Create a new thread</button>
+
+
+{% endblock %}
