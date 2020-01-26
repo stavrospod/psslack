@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     document.querySelector('#send').disabled = true;
+    input.focus();
+    input.select();
     
     document.querySelector('#input').onkeyup = () => {
         if (document.querySelector('#input').value.length > 0)
@@ -8,19 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         else
         document.querySelector('#send').disabled = true;
     }
-
-    
-    // Enable button only if there is text in the input field
-
-     /*
-    document.querySelector('#input').onkeyup = () => {
-    if (document.querySelector('#input').value.length > 0)
-        document.querySelector('#send').disabled = false;
-    else
-        document.querySelector('#send').disabled = true;
-     }
-     */
-
 
     // Connect to websocket
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
@@ -52,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         toastheader.setAttribute("class", "toast-header");
         const username = document.createElement("strong");
         username.setAttribute("class", "mr-auto username");
-        username.innerHTML = "Bootstrap"
+        username.innerHTML = `From: ${data.name} -- Date: ${data.date} - Time: ${data.time}`
         const toastbody = document.createElement("div");
         toastbody.setAttribute("class", "toast-body")
         toastbody.innerHTML = `${data.message}`
@@ -65,16 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    //Addition of the new thread to the list threads
-    socket.on('thread created', data => {
-        console.log(data)
-        const li = document.createElement('li');
-        const a = document.createElement('a')
-        li.innerHTML = `${data.thread_name}`;
-        a.appendChild(li);
-        var url = "chat"
-        var param = `${data.thread_name}`
-        a.href = url + "/" + param;
-        document.querySelector('#threads').append(a);
-    });
+    var messageBody = document.querySelector('.chat');
+    messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+
 });

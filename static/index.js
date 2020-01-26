@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     // Connect to websocket
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
     // When connected, configure buttons
@@ -23,4 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
         a.href = url + "/" + param;
         document.querySelector('#threads').append(a);
     });
+
+socket.on('thread exists', data => {
+    console.log(data)
+    alert(`The thread with name ${data.thread_name} exists. Please create with another name`)
+});
+
 });
